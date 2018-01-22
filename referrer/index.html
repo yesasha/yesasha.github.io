@@ -15,23 +15,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <body>
 <main class="w3-container">
   <div class="w3-panel w3-pale-red w3-leftbar w3-border-red status">
-    <h2>Referrer:</h2>
-    <p>Referrer is not available...</p>
+    <h3>Referrer:</h3>
+    <p>Not available...</p>
   </div>
-  <a href="javascript:(function(){window.open('https://yesasha.github.io/referrer/');})();">Referrer</a>
+  <a href="javascript:(function(){window.open('https://yesasha.github.io/referrer/', '_blank');})();">Referrer</a>
 </main>
 <script type="text/javascript">
 // Get all needed elements
 var myStatus = document.getElementsByClassName('status')[0];
 
-if (document.referrer) {
+// if (document.referrer) {
   myStatus.classList.remove('w3-pale-red');
   myStatus.classList.remove('w3-border-red');
   myStatus.classList.add('w3-pale-green');
   myStatus.classList.add('w3-border-green');
 
   myStatus.innerHTML = '<h2>Referrer:</h2><p>' + document.referrer + '</p>';
-}
+// }
 
 </script>
 </body>
