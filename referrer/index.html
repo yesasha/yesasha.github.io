@@ -32,7 +32,7 @@ if (document.referrer) {
   myStatus.innerHTML = '<h3>Referrer:</h3><p>' + document.referrer + '</p>';
 }
 
-main.insertAdjacentHTML('beforeend', '<a href="javascript:(function(){var w=window.open(\'' + location.href + '\',\'_blank\',\'menubar=no,toolbar=no,status=no,personalbar=no\');var i=setInterval(function(){if(w.closed){alert('Closed!');clearTimeout(i);})();">Referrer</a>');
+main.insertAdjacentHTML('beforeend', '<a href="javascript:(function(){var w=window.open(\'' + location.href + '\',\'_blank\',\'menubar=no,toolbar=no,status=no,personalbar=no\');var i=setInterval(function(){if(w.closed){alert(\'Closed!\');clearTimeout(i);})();">Referrer</a>');
 </script>
 </body>
 </html>
