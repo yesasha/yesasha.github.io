@@ -14,8 +14,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 </head>
 <body>
 <main class="w3-container">
-  <h1>Referrer</h1>
   <div class="w3-panel w3-pale-red w3-leftbar w3-border-red status">
+    <h2>Referrer:</h2>
     <p>Referrer is not available...</p>
   </div>
   <a href="javascript:(function(){window.open('https://yesasha.github.io/referrer/');})();">Referrer</a>
@@ -30,7 +30,7 @@ if (document.referrer) {
   myStatus.classList.add('w3-pale-green');
   myStatus.classList.add('w3-border-green');
 
-  myStatus.innerHTML = '<p>You have come from ' + document.referrer + '.</p>';
+  myStatus.innerHTML = '<h2>Referrer:</h2><p>' + document.referrer + '</p>';
 }
 
 </script>
