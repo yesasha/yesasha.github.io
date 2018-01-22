@@ -18,6 +18,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <h3>Referrer:</h3>
     <p>Not available...</p>
   </div>
+  <a href="(function(){var w=window.open('https://yesasha.github.io/referrer/','_blank','menubar=no,toolbar=no,status=no,personalbar=no'),i=setInterval(function(){a.closed&&(alert('Closed!'),clearTimeout(i))},1E3)})();"></a>
 </main>
 <script type="text/javascript">
 var main = document.querySelector('main');
@@ -31,8 +32,6 @@ if (document.referrer) {
 
   myStatus.innerHTML = '<h3>Referrer:</h3><p>' + document.referrer + '</p>';
 }
-
-main.insertAdjacentHTML('beforeend', '<a href="javascript:(function(){var w=window.open(\'' + location.href + '\',\'_blank\',\'menubar=no,toolbar=no,status=no,personalbar=no\');var i=setInterval(function(){if(w.closed){alert(\'Closed!\');clearTimeout(i);})();">Referrer</a>');
 </script>
 </body>
 </html>
