@@ -18,11 +18,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <h3>Referrer:</h3>
     <p>Not available...</p>
   </div>
-  <a href="javascript:(function(){var w=window.open('https://yesasha.github.io/referrer/','_blank','menubar=no,toolbar=no,status=no,personalbar=no'),i=setInterval(function(){w.closed&&(alert('Closed!'),clearTimeout(i))},1E3)})();">Referrer</a>
+  <a href="javascript:(function(){var w=window.open('{{href}}','_blank','menubar=no,toolbar=no,status=no,personalbar=no'),i=setInterval(function(){w.closed&&(alert('Closed!'),clearTimeout(i))},1E3)})();">Referrer</a>
 </main>
 <script type="text/javascript">
 var main = document.querySelector('main');
 var myStatus = main.querySelector('.status');
+var myBookmarklet = main.querySelector('a');
 
 if (document.referrer) {
   myStatus.classList.remove('w3-pale-red');
@@ -32,6 +33,8 @@ if (document.referrer) {
 
   myStatus.innerHTML = '<h3>Referrer:</h3><p>' + document.referrer + '</p>';
 }
+
+myBookmarklet.href = myBookmarklet.href.replace('{{href}}', location.href);
 </script>
 </body>
 </html>
