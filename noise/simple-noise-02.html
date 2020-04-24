@@ -52,7 +52,7 @@ body {
 <body>
 <h1>Simple Noise</h1>
 <canvas id="cv" width="256" height="256"></canvas>
-<canvas id="cv2" width="32" height="32"></canvas>
+<canvas id="cv2" width="64" height="64"></canvas>
 <script type="text/javascript" src="../roundlib/roundlib-01.js"></script>
 <script type="text/javascript" src="../es-abstract/es-abstract-01.js"></script>
 <script type="text/javascript">
@@ -122,7 +122,7 @@ function makeScene (imgData) {
     imgData.data[i + 0] = Math.round(Math.random()) * 255;
     imgData.data[i + 1] = Math.round(Math.random()) * 255;
     imgData.data[i + 2] = Math.round(Math.random()) * 255;
-    imgData.data[i + 3] = 255;
+    imgData.data[i + 3] = 8;
   }
 }
   
