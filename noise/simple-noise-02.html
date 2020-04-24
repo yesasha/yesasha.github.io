@@ -112,14 +112,20 @@ Object.assign(ctx, {
 // var imgData = ctx2.createImageData(cv2Width, cv2Height);
 var imgData2 = ctx2.getImageData(0, 0, cv2Width, cv2Height);
 
-// Generate noise and remove transparency
-for (var i = 0; i < imgData2.data.length; i += 4) {
-  imgData2.data[i + 0] = Math.random() * 256;
-  imgData2.data[i + 1] = Math.random() * 256;
-  imgData2.data[i + 2] = Math.random() * 256;
-  imgData2.data[i + 3] = 2;
-}
+makeScene(imgData2);
 
+function makeScene (imgData) {
+  "use strict";
+
+  // Generate noise and transparency
+  for (var i = 0; i < imgData.data.length; i += 4) {
+    imgData.data[i + 0] = Math.random() * 256;
+    imgData.data[i + 1] = Math.random() * 256;
+    imgData.data[i + 2] = Math.random() * 256;
+    imgData.data[i + 3] = 4;
+  }
+}
+  
 requestAnimationFrame(draw);
 function draw (timestamp) {
   "use strict";
@@ -133,20 +139,10 @@ function draw (timestamp) {
   // ctx.fillStyle = 'rgba(0, 0, 0, 1)';
   // ctx.fillRect(0, 0, cvWidth, cvHeight);
 
-
-
-
   ctx2.putImageData(imgData2, 0, 0);
   ctx.drawImage(cv2, 0, 0, cv2Width, cv2Height, 0, 0, cvWidth, cvHeight);
 
-  // Generate noise
-  for (var i = 0; i < imgData2.data.length; i += 4) {
-    imgData2.data[i + 0] = Math.random() * 256;
-    imgData2.data[i + 1] = Math.random() * 256;
-    imgData2.data[i + 2] = Math.random() * 256;
-    // imgData2.data[i + 3] = 16;
-  }
-
+  makeScene(imgData2);
   requestAnimationFrame(draw);
 }
 
