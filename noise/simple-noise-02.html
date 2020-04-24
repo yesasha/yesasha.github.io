@@ -117,7 +117,7 @@ for (var i = 0; i < imgData2.data.length; i += 4) {
   imgData2.data[i + 0] = Math.random() * 256;
   imgData2.data[i + 1] = Math.random() * 256;
   imgData2.data[i + 2] = Math.random() * 256;
-  imgData2.data[i + 3] = 32;
+  imgData2.data[i + 3] = 16;
 }
 
 requestAnimationFrame(draw);
@@ -144,7 +144,7 @@ function draw (timestamp) {
     imgData2.data[i + 0] = Math.random() * 256;
     imgData2.data[i + 1] = Math.random() * 256;
     imgData2.data[i + 2] = Math.random() * 256;
-    imgData2.data[i + 3] = 32;
+    imgData2.data[i + 3] = 16;
   }
 
   requestAnimationFrame(draw);
