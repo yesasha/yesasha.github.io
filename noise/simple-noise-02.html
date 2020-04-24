@@ -119,9 +119,9 @@ function makeScene (imgData) {
 
   // Generate noise and transparency
   for (var i = 0; i < imgData.data.length; i += 4) {
-    imgData.data[i + 0] = Math.random() * 256;
-    imgData.data[i + 1] = Math.random() * 256;
-    imgData.data[i + 2] = Math.random() * 256;
+    imgData.data[i + 0] = Math.round(Math.random()) * 255;
+    imgData.data[i + 1] = Math.round(Math.random()) * 255;
+    imgData.data[i + 2] = Math.round(Math.random()) * 255;
     imgData.data[i + 3] = 1;
   }
 }
