@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Simple Noise</title>
+<!-- <meta name="description" content=""> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+*, ::before, ::after {
+  box-sizing: inherit;
+  outline: none;
+}
+html {
+  box-sizing: border-box;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="../normalize.css/normalize-8.0.1.css">
+<style type="text/css">
+html, body {
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+html {
+  overflow-x: hidden;
+}
+h1 {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-weight: 400;
+}
+h1 {
+  font-size: 32px;
+  line-height: 48px;
+  margin: 12px 0;
+}
+body {
+  background-color: #1D1E22;
+  color: #FFFFFF;
+  text-align: center;
+}
+::selection {
+  background-color: #FFFFFF!important;
+  color: #000000!important;
+}
+#cv {
+}
+#cv2 {
+  display: none;
+}
+</style>
+</head>
+<body>
+<h1>Simple Noise</h1>
+<canvas id="cv" width="256" height="256"></canvas>
+<canvas id="cv2" width="32" height="32"></canvas>
+<script type="text/javascript" src="../roundlib/roundlib-01.js"></script>
+<script type="text/javascript" src="../es-abstract/es-abstract-01.js"></script>
+<script type="text/javascript">
+var cv = document.getElementById('cv');
+var ctx = cv.getContext('2d');
+
+var cvWidth = cv.width;
+var cvHeight = cv.height;
+var cvHalfWidth = cvWidth / 2;
+var cvHalfHeight = cvHeight / 2;
+
+var cv2 = document.getElementById('cv2');
+var ctx2 = cv2.getContext('2d');
+
+var cv2Width = cv2.width;
+var cv2Height = cv2.height;
+var cv2HalfWidth = cv2Width / 2;
+var cv2HalfHeight = cv2Height / 2;
+
+var ctxDefaults = {
+  fillStyle: "#000000",
+  strokeStyle: "#000000",
+  shadowColor: "#000000",
+  shadowBlur: 0,
+  shadowOffsetX: 0,
+  shadowOffsetY: 0,
+  lineWidth: 1,
+  lineCap: "butt", // "butt", "round", "square"
+  lineJoin: "miter", // "miter", "round", "bevel"
+  miterLimit: 10,
+  font: '16px "Courier New", Courier, monospace',
+  textAlign: 'start', // "start", "end", "left", "right", "center"
+  textBaseline: "alphabetic", // "top", "hanging", "middle", "alphabetic", "ideographic", "bottom"
+  direction: "inherit", // ltr, rtl, inherit
+  globalAlpha: 1,
+  globalCompositeOperation: "source-over", // source-over, source-atop, source-in, source-out, destination-over, destination-atop, destination-in, destination-out, lighter, copy, xor
+  imageSmoothingEnabled: true,
+  imageSmoothingQuality: "low" // "low" || "medium" || "high"
+};
+
+Object.assign(ctx, ctxDefaults);
+// There are other defaults that can't be set through object
+ctx.setLineDash([]);
+ctx.setTransform(1, 0, 0, 1, 0, 0);
+ctx.clearRect(0, 0, cvWidth, cvHeight);
+
+Object.assign(ctx2, ctxDefaults);
+// There are other defaults that can't be set through object
+ctx2.setLineDash([]);
+ctx2.setTransform(1, 0, 0, 1, 0, 0);
+ctx2.clearRect(0, 0, cv2Width, cv2Height);
+
+Object.assign(ctx, {
+  imageSmoothingEnabled: false
+});
+
+// var imgData = ctx2.createImageData(cv2Width, cv2Height);
+var imgData2 = ctx2.getImageData(0, 0, cv2Width, cv2Height);
+
+// Generate noise and remove transparency
+for (var i = 0; i < imgData2.data.length; i += 4) {
+  imgData2.data[i + 0] = Math.random() * 256;
+  imgData2.data[i + 1] = Math.random() * 256;
+  imgData2.data[i + 2] = Math.random() * 256;
+  imgData2.data[i + 3] = Math.random() * 256;
+}
+
+requestAnimationFrame(draw);
+function draw (timestamp) {
+  "use strict";
+
+  // ctx.setTransform(1, 0, 0, 1, 0, 0);
+  // ctx.scale(devicePixelRatio, devicePixelRatio);
+  // ctx.clearRect(0, 0, cvWidth, cvHeight);
+
+  // ctx.fillStyle = 'rgba(0, 0, 0, 0.03125)';
+  // ctx.fillStyle = 'rgba(0, 0, 0, 0.015625)';
+  // ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+  // ctx.fillRect(0, 0, cvWidth, cvHeight);
+
+
+
+
+  ctx2.putImageData(imgData2, 0, 0);
+  ctx.drawImage(cv2, 0, 0, cv2Width, cv2Height, 0, 0, cvWidth, cvHeight);
+
+  // Generate noise
+  for (var i = 0; i < imgData2.data.length; i += 4) {
+    imgData2.data[i + 0] = Math.random() * 256;
+    imgData2.data[i + 1] = Math.random() * 256;
+    imgData2.data[i + 2] = Math.random() * 256;
+    imgData2.data[i + 3] = Math.random() * 256;
+  }
+
+  requestAnimationFrame(draw);
+}
+
+
+
+</script>
+</body>
+</html>
