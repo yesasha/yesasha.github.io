@@ -81,8 +81,6 @@ var ctxDefaults = {
   imageSmoothingEnabled: true,
   imageSmoothingQuality: "low" // "low" || "medium" || "high"
 };
-
-
   
 requestAnimationFrame(frame);
 function frame (timestamp) {
@@ -97,18 +95,36 @@ function frame (timestamp) {
   // ctx.fillStyle = 'rgba(0, 0, 0, 1)';
   // ctx.fillRect(0, 0, cvWidth, cvHeight);
 
+  Object.assign(ctx, {
+    strokeStyle: toRGBA(Math.random() * 256, Math.random() * 256, Math.random() * 256, 1);
+  });
+
   strokeLine(ctx, Math.random() * 256, Math.random() * 256, Math.random() * 256, Math.random() * 256);
 
   requestAnimationFrame(frame);
 }
 
 function strokeLine (ctx, x, y, x2, y2) {
+  "use strict";
+
   ctx.beginPath();
   ctx.moveTo(x, y);
   ctx.lineTo(x2, y2);
   ctx.stroke();
 }
 
+function toAlpha (argument) {
+  "use strict";
+
+  return ToUint8Clamp(argument * 255) / 255;
+}
+
+function toRGBA (r, g, b, a) {
+  "use strict";
+
+  return "rgba(" + ToUint8Clamp(r) + ", " + ToUint8Clamp(g) + ", " + ToUint8Clamp(b) + ", " + toAlpha(a) + ")";
+}
+  
 </script>
 </body>
 </html>
