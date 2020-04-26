@@ -99,7 +99,11 @@ function frame (timestamp) {
     strokeStyle: toRGBA(Math.random() * 256, Math.random() * 256, Math.random() * 256, 1)
   });
 
-  strokeLine(ctx, Math.random() * 256, Math.random() * 256, Math.random() * 256, Math.random() * 256);
+
+  for (var i = 0; i < 16; i++) {
+    strokeLine(ctx, Math.random() * 256, Math.random() * 256, Math.random() * 256, Math.random() * 256);
+  }
+
 
   requestAnimationFrame(frame);
 }
