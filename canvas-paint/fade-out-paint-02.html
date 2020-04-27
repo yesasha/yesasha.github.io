@@ -87,7 +87,7 @@ var mouseStart;
 
 Object.assign(ctx, {
   strokeStyle: "rgba(255, 255, 255, 1)",
-  lineWidth: 2,
+  lineWidth: 8,
   lineJoin: "round" // "miter", "round", "bevel"
 });
 
@@ -111,9 +111,8 @@ addEventListener('mousemove', function (event) {
     var mousePos = getMousePos(cv, event);
     strokeLine(ctx, mouseStart.x, mouseStart.y, mousePos.x, mousePos.y);
     mouseStart = mousePos;
+    event.preventDefault();
   }
-
-  event.preventDefault();
 }, false);
 
 requestAnimationFrame(frame);
