@@ -90,17 +90,16 @@ function frame (timestamp) {
   // ctx.scale(devicePixelRatio, devicePixelRatio);
   // ctx.clearRect(0, 0, cvWidth, cvHeight);
 
-  // ctx.fillStyle = 'rgba(0, 0, 0, 0.03125)';
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.03125)';
   // ctx.fillStyle = 'rgba(0, 0, 0, 0.015625)';
   // ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-  // ctx.fillRect(0, 0, cvWidth, cvHeight);
-
-  Object.assign(ctx, {
-    strokeStyle: toRGBA(Math.random() * 256, Math.random() * 256, Math.random() * 256, 1)
-  });
+  ctx.fillRect(0, 0, cvWidth, cvHeight);
 
 
-  for (var i = 0; i < 256; i++) {
+  for (var i = 0; i < 16; i++) {
+    Object.assign(ctx, {
+      strokeStyle: toRGBA(Math.random() * 256, Math.random() * 256, Math.random() * 256, 1)
+    });
     strokeLine(ctx, Math.random() * 256, Math.random() * 256, Math.random() * 256, Math.random() * 256);
   }
 
