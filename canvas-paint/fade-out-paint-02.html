@@ -92,6 +92,7 @@ var clicked = false;
 var mouseStart;
 
 Object.assign(ctx, {
+  fillStyle: "rgba(255, 255, 255, 1)",
   strokeStyle: "rgba(255, 255, 255, 1)",
   lineWidth: brushWidth,
   lineCap: "round" // "butt", "round", "square"
@@ -121,7 +122,7 @@ cv.addEventListener('mousedown', function (event) {
   clicked = true;
   mouseStart = getMousePos(cv, event);
 
-  fillCircle (ctx, mouseStart.x, mouseStart.y, brushRadius);
+  fillCircle(ctx, mouseStart.x, mouseStart.y, brushRadius);
 
   // event.preventDefault();
 }, false);
