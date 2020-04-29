@@ -195,9 +195,23 @@ function getMousePos (element, event) {
 
   var rect = element.getBoundingClientRect();
 
+  var styles = getComputedStyle(element, null);
+
+  // Need only paddings, but keep others for reference
+  var borderTopWidth = parseFloat(styles.getPropertyValue('border-top-width'));
+  var borderRightWidth = parseFloat(styles.getPropertyValue('border-right-width'));
+  var borderBottomWidth = parseFloat(styles.getPropertyValue('border-bottom-width'));
+  var borderLeftWidth = parseFloat(styles.getPropertyValue('border-left-width'));
+
+  var paddingTop = parseFloat(styles.getPropertyValue('padding-top'));
+  var paddingRight = parseFloat(styles.getPropertyValue('padding-right'));
+  var paddingBottom = parseFloat(styles.getPropertyValue('padding-bottom'));
+  var paddingLeft = parseFloat(styles.getPropertyValue('padding-left'));
+
+
   return {
-    x: (event.clientX - rect.left - element.clientLeft),
-    y: (event.clientY - rect.top - element.clientTop)
+    x: (event.clientX - rect.left - element.clientLeft - paddingLeft + element.scrollLeft),
+    y: (event.clientY - rect.top - element.clientTop - paddingTop + element.scrollTop)
   };
 }
 </script>
