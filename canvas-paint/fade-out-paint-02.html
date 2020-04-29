@@ -40,10 +40,12 @@ body {
   background-color: #FFFFFF!important;
   color: #000000!important;
 }
-#cv {
+#cvwrapper {
   padding: 16px;
   border: 16px solid red;
   resize: both;
+}
+#cv {
 }
 #cv2 {
   display: none;
@@ -52,7 +54,7 @@ body {
 </head>
 <body>
 <h1>Fade Out Paint</h1>
-<canvas id="cv" width="256" height="256"></canvas>
+<div><canvas id="cv" width="256" height="256"></canvas></div>
 <script type="text/javascript" src="../roundlib/roundlib-01.js"></script>
 <script type="text/javascript" src="../es-abstract/es-abstract-01.js"></script>
 <script type="text/javascript">
@@ -62,6 +64,7 @@ var brushWidth = 8;
 // Derived Parameters
 var brushRadius = brushWidth / 2;
 
+var cvwrapper = document.getElementById('cvwrapper');
 var cv = document.getElementById('cv');
 var ctx = cv.getContext('2d');
 
@@ -101,7 +104,7 @@ Object.assign(ctx, {
   lineCap: "round" // "butt", "round", "square"
 });
 
-cv.addEventListener('mousedown', function (event) {
+cvwrapper.addEventListener('mousedown', function (event) {
   "use strict";
 
   console.log("which: " + event.which);
@@ -113,9 +116,8 @@ cv.addEventListener('mousedown', function (event) {
     return;
   }
 
-
   clicked = true;
-  mouseStart = getMousePos(cv, event);
+  mouseStart = getMousePos(cvwrapper, event);
 
   ctx.fillStyle = "rgba(255, 255, 255, 1)";
   fillCircle(ctx, mouseStart.x, mouseStart.y, brushRadius);
@@ -125,6 +127,7 @@ cv.addEventListener('mousedown', function (event) {
 
 addEventListener('mouseup', function (event) {
   "use strict";
+
   clicked = false;
 }, false);
 
@@ -132,7 +135,7 @@ addEventListener('mousemove', function (event) {
   "use strict";
 
   if (clicked) {
-    var mousePos = getMousePos(cv, event);
+    var mousePos = getMousePos(cvwrapper, event);
     strokeLine(ctx, mouseStart.x, mouseStart.y, mousePos.x, mousePos.y);
     mouseStart = mousePos;
     event.preventDefault();
