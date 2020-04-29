@@ -101,17 +101,9 @@ Object.assign(ctx, {
 cv.addEventListener('mousedown', function (event) {
   "use strict";
 
-  // Create .which property if not exists
-  // As far as I've tested, it exists in all modern browsers
-  if (!event.which) {
-    if (event.button & 1) {
-      event.which = 1;
-    } else if (event.button & 4) {
-      event.which = 2;
-    } else if (event.button & 2) {
-      event.which = 3;
-    }
-  }
+  console.log("which: " + event.which);
+  console.log("button: " + event.button);
+  console.log("buttons: " + event.buttons);
 
   // Return, if not left mouse button
   if (event.which !== 1) {
