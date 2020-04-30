@@ -108,7 +108,7 @@ Object.assign(ctx, {
   lineCap: "round" // "butt", "round", "square"
 });
 
-cvwrapper.addEventListener('mousedown', function (event) {
+cv.addEventListener('mousedown', function (event) {
   "use strict";
 
   console.log("which: " + event.which);
@@ -121,7 +121,7 @@ cvwrapper.addEventListener('mousedown', function (event) {
   }
 
   clicked = true;
-  mouseStart = getMousePos(cvwrapper, event);
+  mouseStart = getMousePos(cv, event);
 
   ctx.fillStyle = "rgba(255, 255, 255, 1)";
   fillCircle(ctx, mouseStart.x, mouseStart.y, brushRadius);
@@ -139,7 +139,7 @@ addEventListener('mousemove', function (event) {
   "use strict";
 
   if (clicked) {
-    var mousePos = getMousePos(cvwrapper, event);
+    var mousePos = getMousePos(cv, event);
     strokeLine(ctx, mouseStart.x, mouseStart.y, mousePos.x, mousePos.y);
     mouseStart = mousePos;
     event.preventDefault();
@@ -220,8 +220,8 @@ function getMousePos (element, event) {
 
 
   return {
-    x: (event.clientX - rect.left - element.clientLeft - paddingLeft + element.scrollLeft),
-    y: (event.clientY - rect.top - element.clientTop - paddingTop + element.scrollTop)
+    x: (event.clientX - rect.left - element.clientLeft - paddingLeft + element.scrollLeft) * element.width / element.clientWidth,
+    y: (event.clientY - rect.top - element.clientTop - paddingTop + element.scrollTop) * element.height / element.clientHeight
   };
 }
 </script>
