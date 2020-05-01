@@ -168,10 +168,10 @@ function frame (timestamp) {
     imgData2.data[i + 0] = Math.min(brightness, imgData.data[i + 0]);
     imgData2.data[i + 1] = Math.min(brightness, imgData.data[i + 1]);
     imgData2.data[i + 2] = Math.min(brightness, imgData.data[i + 2]);
-    imgData.data[i + 3] = 255;
+    // imgData2.data[i + 3] = 255;
   }
 
-  brightness++;
+  brightness = (brightness + 1) % 256;;
   
   ctx.putImageData(imgData2, 0, 0);
 //   ctx.drawImage(cv2, 0, 0, cv2Width, cv2Height, 0, 0, cvWidth, cvHeight);
