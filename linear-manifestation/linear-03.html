@@ -171,7 +171,7 @@ function frame (timestamp) {
     // imgData2.data[i + 3] = 255;
   }
 
-  brightness = (brightness + 1) % 256;;
+  brightness = (brightness + 1) % 1024;;
   
   ctx.putImageData(imgData2, 0, 0);
 //   ctx.drawImage(cv2, 0, 0, cv2Width, cv2Height, 0, 0, cvWidth, cvHeight);
