@@ -165,9 +165,9 @@ function draw (timestamp) {
   for (var i = 0; i < imgData.data.length; i += 4) {
     // var col = roundHalfUp(Math.random()) * 255;
     var col = (Math.random() - 0.5) * 2;
-    imgData.data[i + 0] = imgData.data[i + 0] + col;
-    imgData.data[i + 1] = imgData.data[i + 1] + col;
-    imgData.data[i + 2] = imgData.data[i + 2] + col;
+    imgData.data[i + 0] = imgData.data[i + 0] + 1;
+    imgData.data[i + 1] = imgData.data[i + 1] + 1;
+    imgData.data[i + 2] = imgData.data[i + 2] + 1;
 //     imgData.data[i + 3] = 32;
   }
 
