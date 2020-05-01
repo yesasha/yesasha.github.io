@@ -44,7 +44,7 @@ body {
 }
 #cv {
 }
-#cv2 {
+#cv2, #target_image {
   display: none;
 }
 </style>
@@ -53,11 +53,16 @@ body {
 <h1>Simple Noise</h1>
 <canvas id="cv" width="256" height="256"></canvas>
 <canvas id="cv2" width="256" height="256"></canvas>
+<img id="target_image" src="plant-01.jpg">
 <script type="text/javascript" src="../roundlib/roundlib-01.js"></script>
 <script type="text/javascript" src="../es-abstract/es-abstract-01.js"></script>
 <script type="text/javascript">
+var target_image = document.getElementById('target_image');
 var cv = document.getElementById('cv');
 var ctx = cv.getContext('2d');
+
+cv.width = target_image.naturalWidth;
+cv.height = target_image.naturalHeight;
 
 var cvWidth = cv.width;
 var cvHeight = cv.height;
@@ -71,6 +76,19 @@ var cv2Width = cv2.width;
 var cv2Height = cv2.height;
 var cv2HalfWidth = cv2Width / 2;
 var cv2HalfHeight = cv2Height / 2;
+
+cv2.width = target_image.naturalWidth;
+cv2.height = target_image.naturalHeight;
+
+
+
+
+
+ctx2.drawImage(target_image, 0, 0);
+
+// var imgData = ctx.createImageData(cv.width, cv.height);
+var imgData = ctx.getImageData(0, 0, cvWidth, cvHeight);
+var imgData2 = ctx2.getImageData(0, 0, cv2Width, cv2Height);
 
 var ctxDefaults = {
   fillStyle: "#000000",
@@ -110,9 +128,9 @@ Object.assign(ctx, {
 });
 
 // var imgData = ctx2.createImageData(cv2Width, cv2Height);
-var imgData2 = ctx2.getImageData(0, 0, cv2Width, cv2Height);
+// var imgData2 = ctx2.getImageData(0, 0, cv2Width, cv2Height);
 
-makeScene(imgData2);
+// makeScene(imgData2);
 
 function makeScene (imgData) {
   "use strict";
@@ -141,10 +159,21 @@ function draw (timestamp) {
   // ctx.fillStyle = 'rgba(0, 0, 0, 1)';
   // ctx.fillRect(0, 0, cvWidth, cvHeight);
 
-  ctx2.putImageData(imgData2, 0, 0);
-  ctx.drawImage(cv2, 0, 0, cv2Width, cv2Height, 0, 0, cvWidth, cvHeight);
 
-  makeScene(imgData2);
+  // Generate noise and transparency
+  for (var i = 0; i < imgData.data.length; i += 4) {
+    // var col = roundHalfUp(Math.random()) * 255;
+    var col = (Math.random() - 0.5);
+    imgData.data[i + 0] = imgData.data[i + 0] + col;
+    imgData.data[i + 1] = imgData.data[i + 1] + col;
+    imgData.data[i + 2] = imgData.data[i + 2] + col;
+//     imgData.data[i + 3] = 32;
+  }
+
+  ctx.putImageData(imgData, 0, 0);
+//   ctx.drawImage(cv2, 0, 0, cv2Width, cv2Height, 0, 0, cvWidth, cvHeight);
+
+//   makeScene(imgData2);
   requestAnimationFrame(draw);
 }
 
