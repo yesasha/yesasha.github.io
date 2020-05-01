@@ -223,8 +223,8 @@ function getMousePos (element, event) {
 
 
   return {
-    x: (event.clientX - rect.left - element.clientLeft - paddingLeft + element.scrollLeft) * element.width / element.clientWidth,
-    y: (event.clientY - rect.top - element.clientTop - paddingTop + element.scrollTop) * element.height / element.clientHeight
+    x: (event.clientX - rect.left - element.clientLeft - paddingLeft + element.scrollLeft) * element.width / (element.clientWidth - paddingLeft - paddingRight),
+    y: (event.clientY - rect.top - element.clientTop - paddingTop + element.scrollTop) * element.height / (element.clientHeight - paddingTop - paddingBottom)
   };
 }
 </script>
