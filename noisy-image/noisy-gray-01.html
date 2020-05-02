@@ -163,10 +163,10 @@ function frame (timestamp) {
   // Generate noise and transparency
   for (var i = 0; i < imgData.data.length; i += 4) {
     // var col = roundHalfUp(Math.random()) * 255;
-    // var col = (Math.random() - 0.5) * 2;
-    imgData2.data[i + 0] = (Math.random() * 256) > imgData.data[i + 0] ? 255 : 0;
-    imgData2.data[i + 1] = (Math.random() * 256) > imgData.data[i + 1] ? 255 : 0;
-    imgData2.data[i + 2] = (Math.random() * 256) > imgData.data[i + 2] ? 255 : 0;
+    var gray = (Math.random() * 256) > imgData.data[i + 0] ? 255 : 0;
+    imgData2.data[i + 0] = gray;
+    imgData2.data[i + 1] = gray;
+    imgData2.data[i + 2] = gray;
     // imgData2.data[i + 3] = 255;
   }
   
