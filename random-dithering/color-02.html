@@ -166,17 +166,17 @@ function frame (timestamp) {
     // var gray = (Math.random() * 256) < imgData.data[i + 0] ? 255 : 0;
     var rnd = Math.random();
     if (rnd < 0.33333) {
-      imgData2.data[i + 0] = (Math.random() * 85.333) < imgData.data[i + 0] ? 255 : 0;
+      imgData2.data[i + 0] = (Math.random() * 256) < imgData.data[i + 0] ? 255 : 0;
       imgData2.data[i + 1] = 0;
       imgData2.data[i + 2] = 0;
     } else if (rnd > 0.66667) {
       imgData2.data[i + 0] = 0;
-      imgData2.data[i + 1] = (Math.random() * 85.333) < imgData.data[i + 1] ? 255 : 0;
+      imgData2.data[i + 1] = (Math.random() * 256) < imgData.data[i + 1] ? 255 : 0;
       imgData2.data[i + 2] = 0;
     } else {
       imgData2.data[i + 0] = 0;
       imgData2.data[i + 1] = 0;
-      imgData2.data[i + 2] = (Math.random() * 85.333) < imgData.data[i + 2] ? 255 : 0;
+      imgData2.data[i + 2] = (Math.random() * 256) < imgData.data[i + 2] ? 255 : 0;
     }
   }
   
