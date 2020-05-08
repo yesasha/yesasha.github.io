@@ -164,11 +164,12 @@ function frame (timestamp) {
   for (var i = 0; i < imgData.data.length; i += 4) {
     // var col = roundHalfUp(Math.random()) * 255;
     // var gray = (Math.random() * 256) < imgData.data[i + 0] ? 255 : 0;
-    if (Math.random() < 0.33333) {
+    var rnd = Math.random();
+    if (rnd < 0.33333) {
       imgData2.data[i + 0] = (Math.random() * 85.333) < imgData.data[i + 0] ? 255 : 0;
       imgData2.data[i + 1] = 0;
       imgData2.data[i + 2] = 0;
-    } else if (Math.random() > 0.66667) {
+    } else if (rnd > 0.66667) {
       imgData2.data[i + 0] = 0;
       imgData2.data[i + 1] = (Math.random() * 85.333) < imgData.data[i + 1] ? 255 : 0;
       imgData2.data[i + 2] = 0;
