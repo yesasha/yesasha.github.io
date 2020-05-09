@@ -87,6 +87,8 @@ target_image.onload = function () {
   cvHalfWidth = cvWidth / 2;
   cvHalfHeight = cvHeight / 2;
 
+  ctx.drawImage(target_image, 0, 0);
+
   cv2.width = target_image.naturalWidth;
   cv2.height = target_image.naturalHeight;
 
@@ -101,7 +103,6 @@ target_image.onload = function () {
   //  fillStyle: "#000000"
   // });
   // ctx2.fillRect(0, 0, cv2Width, cv2Height);
-  // ctx2.drawImage(target_image, 0, 0);
 
   // var imgData = ctx.createImageData(cv.width, cv.height);
   imgData = ctx.getImageData(0, 0, cvWidth, cvHeight);
@@ -167,11 +168,11 @@ function frame (timestamp) {
     imgData2.data[i + 0] = gray;
     imgData2.data[i + 1] = gray;
     imgData2.data[i + 2] = gray;
-//     imgData2.data[i + 3] = 32;
+    imgData2.data[i + 3] = 32;
   }
   
-  ctx.putImageData(imgData2, 0, 0);
-//   ctx.drawImage(cv2, 0, 0, cv2Width, cv2Height, 0, 0, cvWidth, cvHeight);
+  ctx2.putImageData(imgData2, 0, 0);
+  ctx.drawImage(cv2, 0, 0, cv2Width, cv2Height, 0, 0, cvWidth, cvHeight);
 
   requestAnimationFrame(frame);
 }
