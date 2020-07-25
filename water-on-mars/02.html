@@ -43,7 +43,15 @@ body {
   color: #000000!important;
 }
 #vid {
-  transform: scale(1, 0.5) rotate(45deg);
+/*   transform: scale(1, 0.5) rotate(45deg); */
+}
+#wrapper {
+  width: 192px;
+  height: 192px;
+  backgroung-color: red;
+}
+#wrapper > video {
+  vertical-align: middle;
 }
 #cv {
 }
@@ -54,7 +62,9 @@ body {
 </head>
 <body>
 <h1>Water On Mars</h1>
-<video id="vid" width="64" height="64" src="water.mp4" autoplay muted loop></video>
+<div id="wrapper">
+  <video id="vid" width="64" height="64" src="water.mp4" autoplay muted loop></video>
+</div>
 <script type="text/javascript" src="../roundlib/roundlib-01.js"></script>
 <script type="text/javascript" src="../es-abstract/es-abstract-01.js"></script>
 <script type="text/javascript">
