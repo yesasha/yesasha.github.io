@@ -35,15 +35,20 @@ body {
   background-color: #1D1E22;
   color: #FFFFFF;
   text-align: center;
-  padding: 0 16px;
 }
 ::selection {
   background-color: #FFFFFF!important;
   color: #000000!important;
 }
-
+#calculator {
+  padding: 0.01em 16px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 256px;
+  height: 256px;
+}
 #monitor {
-  padding: 0 8px;
+  padding: 0 4px;
   font-size: 16px;
   line-height: 23px;
   /*vertical-align: middle;*/
@@ -63,7 +68,9 @@ body {
 </head>
 <body>
 <h1>Calculator</h1>
-<input type="text" id="monitor">
+<div id="calculator">
+  <input type="text" id="monitor">
+</div>
 <script type="text/javascript" src="../roundlib/roundlib-01.js"></script>
 <script type="text/javascript" src="../es-abstract/es-abstract-01.js"></script>
 <script type="text/javascript">
