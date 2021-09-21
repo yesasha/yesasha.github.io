@@ -29,9 +29,9 @@ h2 {
   margin: 12px 0;
 }
 body {
+  padding: 0.01em 0;
   background-color: #1D1E22;
   color: #FFFFFF;
-  text-align: center;
 }
 ::selection {
   background-color: #FFFFFF!important;
@@ -113,11 +113,11 @@ function draw2 () {
   requestAnimationFrame(draw2);
 }
 
-function drawCircle (x, y, r) {
-  ctx.beginPath();
-  ctx.arc(x, y, r, 0, 2 * Math.PI, false);
-  ctx.fill();
-  ctx.stroke();
+function drawCircle2 (x, y, r) {
+  ctx2.beginPath();
+  ctx2.arc(x, y, r, 0, 2 * Math.PI, false);
+  ctx2.fill();
+  ctx2.stroke();
 }
 
 </script>
