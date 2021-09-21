@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Uniformly put random points in circle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../normalize.css/normalize-8.0.1.css">
+<style type="text/css">
+html, body {
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+html {
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-weight: 400;
+}
+h1 {
+  font-size: 32px;
+  line-height: 48px;
+  margin: 12px 0;
+}
+h2 {
+  font-size: 24px;
+  line-height: 24px;
+  margin: 12px 0;
+}
+body {
+  background-color: #1D1E22;
+  color: #FFFFFF;
+  text-align: center;
+}
+::selection {
+  background-color: #FFFFFF!important;
+  color: #1D1E22!important;
+}
+p {
+  margin: 12px 0;
+}
+</style>
+</head>
+<body>
+<h1>Uniformly put random points in circle</h1>
+<p>Before we draw points in circle we must solve some related problems. First of all, the point must have some radius, to be visible. So lets first draw points in a square that is an entire canvas</p>
+<h2>In square</h2>
+<canvas id="cv" width="256" height="256"></canvas>
+<script type="text/javascript">
+var cv = document.getElementById('cv');
+var ctx = cv.getContext('2d');
+var cvWidth = cv.width;
+var cvHeight = cv.height;
+
+// Settings
+var radius = 16;
+var lineWidth = 4;
+// End of settings
+
+ctx.fillStyle = "#FFFFFF";
+ctx.strokeStyle = '#FF0000';
+ctx.lineWidth = 4;
+
+requestAnimationFrame(draw);
+
+function draw () {
+  "use strict";
+
+  drawCircle(
+    Math.random() * (cvWidth - radius * 2) + radius,
+    Math.random() * (cvHeight - radius * 2) + radius,
+    radius
+  );
+
+  requestAnimationFrame(draw);
+}
+
+function drawCircle (x, y, r) {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, 2 * Math.PI, false);
+  ctx.fill();
+//   ctx.stroke();
+}
+</script>
+<canvas id="cv2" width="256" height="256"></canvas>
+<script type="text/javascript">
+var cv2 = document.getElementById('cv2');
+var ctx2 = cv2.getContext('2d');
+var cv2Width = cv2.width;
+var cv2Height = cv2.height;
+
+// Settings
+var radius2 = 16;
+var line2Width = 4;
+// End of settings
+
+ctx2.fillStyle = "#FFFFFF";
+ctx2.strokeStyle = '#FF0000';
+ctx2.line2Width = 4;
+
+requestAnimationFrame(draw);
+
+function draw2 () {
+  "use strict";
+
+  drawCircle(
+    Math.random() * (c2vWidth - radius2 * 2 - line2Width) + line2Width / 2 + radius2,
+    Math.random() * (cv2Height - radius2 * 2 - line2Width) + line2Width / 2 + radius2,
+    radius
+  );
+
+  requestAnimationFrame(draw2);
+}
+
+function drawCircle (x, y, r) {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, 2 * Math.PI, false);
+  ctx.fill();
+  ctx.stroke();
+}
+
+</script>
+</body>
+</html>
